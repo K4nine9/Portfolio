@@ -1,290 +1,415 @@
-<!DOCTYPE html>
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
 <html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio of S. Hikaru</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- lucide icons CDN -->
+        <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio of S. Hikaru</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <!-- lucide icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        body {
-            /* Noto Sans JPを優先しつつ、英語・数字はInterで見やすく */
-            font-family: 'Noto Sans JP', 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* 印刷用 */
-        @media print {
+        <style>
             body {
-                /* 印刷時の色調整を強制 */
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+                /* Noto Sans JPを優先しつつ、英語・数字はInterで見やすく */
+                font-family: "Noto Sans JP", "Inter", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
 
-            .printable-area {
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
-                padding: 0;
-                box-shadow: none;
-                border: none;
+            /* 印刷用 */
+            @media print {
+                body {
+                    /* 印刷時の色調整を強制 */
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+
+                .printable-area {
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    box-shadow: none;
+                    border: none;
+                }
+
+                .no-print {
+                    display: none;
+                }
+
+                a {
+                    color: #000000 !important;
+                    text-decoration: underline !important;
+                }
+
+                .print-bg {
+                    background-color: var(
+                        --print-bg-color,
+                        transparent
+                    ) !important;
+                }
+
+                .print-border {
+                    border-width: 1px !important;
+                    border-color: #e5e7eb !important;
+                }
             }
 
-            .no-print {
-                display: none;
+            /* カスタムオレンジ色用のスタイル */
+            .text-custom-orange-700 {
+                color: #d9530a;
             }
 
-            a {
-                color: #000000 !important;
-                text-decoration: underline !important;
+            /* #F7630Cより少し濃くして視認性を確保 */
+            .text-custom-orange-600 {
+                color: #f7630c;
             }
 
-            .print-bg {
-                background-color: var(--print-bg-color, transparent) !important;
-            }
-
-            .print-border {
-                border-width: 1px !important;
-                border-color: #e5e7eb !important;
-            }
-        }
-
-        /* カスタムオレンジ色用のスタイル */
-        .text-custom-orange-700 {
-            color: #D9530A;
-        }
-
-        /* #F7630Cより少し濃くして視認性を確保 */
-        .text-custom-orange-600 {
-            color: #F7630C;
-        }
-
-        /* main color
+            /* main color
         .border-custom-orange-200 { border-color: #FDE0CE; } /* #F7630Cの薄い色 */
-        .bg-custom-orange-100 {
-            background-color: #FFF0E6;
-        }
+            .bg-custom-orange-100 {
+                background-color: #fff0e6;
+            }
 
-        /* #F7630Cのさらに薄い色 */
-        .text-custom-orange-800 {
-            color: #B94608;
-        }
-    </style>
-</head>
+            /* #F7630Cのさらに薄い色 */
+            .text-custom-orange-800 {
+                color: #b94608;
+            }
+        </style>
+    </head>
 
-<body class="bg-gray-100">
-
-    <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
-    <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
-    <div class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8">
-
-        <!-- ヘッダーセクション -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
-            <div>
-                <h1 class="text-4xl font-bold text-gray-900">嶋津 瑛</h1>
-                <h2 class="text-2xl font-semibold text-custom-orange-700">Hikaru Shimadzu</h2>
-                <p class="text-lg text-gray-600 mt-2">
-                    筑波大学 システム情報工学研究群<br>
-                    知能機能システム学位プログラム 博士前期課程
-                </p>
-            </div>
-            <div class="mt-4 sm:mt-0 text-sm text-gray-700 sm:text-right space-y-1">
-                <div class="flex items-center justify-end">
-                    <span class="mr-2">s2520774@u.tsukuba.ac.jp</span>
-                    <i data-lucide="mail" class="w-4 h-4"></i>
+    <body class="bg-gray-100">
+        <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
+        <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
+        <div
+            class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8"
+        >
+            <!-- ヘッダーセクション -->
+            <header
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10"
+            >
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900">嶋津 瑛</h1>
+                    <h2 class="text-2xl font-semibold text-custom-orange-700">
+                        Hikaru Shimadzu
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-2">
+                        筑波大学 システム情報工学研究群<br />
+                        知能機能システム学位プログラム 博士前期課程
+                    </p>
                 </div>
-                <div class="flex items-center justify-end">
-                    <a href="https://github.com/K4nine9" target="_blank"
-                        class="mr-2 text-custom-orange-600 hover:underline">github.com/K4nine9</a>
-                    <i data-lucide="github" class="w-4 h-4"></i>
-                </div>
-                <!-- GitHub QRコード -->
-                <div class="flex justify-end pt-2">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://github.com/K4nine9&choe=UTF-8"
-                        alt="GitHub QR Code" class="w-24 h-24"
-                        onerror="this.parentElement.innerHTML = '<div class=\'text-xs text-gray-500 text-right p-2 border border-gray-300 rounded-md w-24 h-24 flex items-center justify-center\'>QRコード読込失敗<br>github.com/K4nine9</div>';">
-                </div>
-            </div>
-        </header>
-
-        <!-- メインコンテンツ -->
-        <main>
-
-            <!-- プロフィールサマリー -->
-            <section class="mb-8">
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    Profile Summary</h3>
-                <p class="text-base text-gray-700 leading-relaxed">
-                    AI・自然言語処理技術、特に大規模言語モデル(LLM)とAIエージェントを活用し、実社会の課題を解決することに強い関心を持っています。高専時代からWebアプリケーション開発や勉強会の運営に主体的に取り組み、大学・大学院では一貫してAIエージェントと社会のインタラクションに関する研究に従事。SNSの炎上防止や学習支援など、AI技術を人々のコミュニケーションや学びに役立てるための研究開発に注力しています。研究の企画から実装、論文執筆、学会発表までを一貫して遂行する能力と、ユーザー視点に立った継続的な開発経験が強みです。
-                </p>
-            </section>
-
-            <!-- スキルセット -->
-            <section class="mb-8">
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    Skills</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold text-gray-800 mb-2">プログラミング・言語</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li><strong>Python(6年):</strong> PyTorch, llama-cpp-python, Webアプリ開発</li>
-                            <li><strong>C / C++(4年):</strong> 基礎プログラミング, アルゴリズム</li>
-                            <li><strong>JavaScript, Java, R, MATLAB, SQL:</strong> 授業・研究・開発で使用経験あり</li>
-                            <li><strong>英語:</strong> TOEIC L&R 895点(2024年), 英語論文執筆経験あり</li>
-                        </ul>
+                <div
+                    class="mt-4 sm:mt-0 text-sm text-gray-700 sm:text-right space-y-1"
+                >
+                    <div class="flex items-center justify-end">
+                        <span class="mr-2">s2520774@u.tsukuba.ac.jp</span>
+                        <i data-lucide="mail" class="w-4 h-4"></i>
                     </div>
-                    <div>
-                        <h4 class="text-lg font-semibold text-gray-800 mb-2">技術・ツール</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li><strong>AI / LLM:</strong> 大規模言語モデル(LLM), 検索拡張生成(RAG), ローカルLLM環境構築・運用経験あり</li>
-                            <li><strong>AIエージェント:</strong> マルチエージェントシミュレーション</li>
-                            <li><strong>開発ツール:</strong> Git, Docker</li>
-                            <li><strong>開発環境:</strong> VSCode, Cursor, Jupyter, Anaconda</li>
-                        </ul>
+                    <div class="flex items-center justify-end">
+                        <a
+                            href="https://github.com/K4nine9"
+                            target="_blank"
+                            class="mr-2 text-custom-orange-600 hover:underline"
+                            >github.com/K4nine9</a
+                        >
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                    <!-- GitHub QRコード -->
+                    <div class="flex justify-end pt-2">
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?data=https://github.com/K4nine9&choe=UTF-8"
+                            alt="GitHub QR Code"
+                            class="w-24 h-24"
+                            onerror="this.parentElement.innerHTML = '<div class=\'text-xs text-gray-500 text-right p-2 border border-gray-300 rounded-md w-24 h-24 flex items-center justify-center\'>QRコード読込失敗<br>github.com/K4nine9</div>';"
+                        />
                     </div>
                 </div>
-            </section>
+            </header>
 
-            <!-- 学歴 -->
-            <section class="mb-8">
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    Education</h3>
-                <ul class="space-y-3">
-                    <li>
-                        <p class="text-base font-semibold text-gray-800">筑波大学 システム情報工学研究群 知能機能システム学位プログラム</p>
-                        <p class="text-sm text-gray-600">博士前期課程 (2025年4月 〜 2027年3月予定)</p>
-                    </li>
-                    <li>
-                        <p class="text-base font-semibold text-gray-800">工学院大学 情報学部 システム数理学科</p>
-                        <p class="text-sm text-gray-600">学士(工学) (2023年4月 〜 2025年3月)</p>
-                    </li>
-                    <li>
-                        <p class="text-base font-semibold text-gray-800">サレジオ工業高等専門学校 情報工学科</p>
-                        <p class="text-sm text-gray-600">準学士 (2018年4月 〜 2023年3月)</p>
-                    </li>
-                </ul>
-            </section>
+            <!-- メインコンテンツ -->
+            <main>
+                <!-- プロフィールサマリー -->
+                <section class="mb-8">
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        Profile Summary
+                    </h3>
+                    <p class="text-base text-gray-700 leading-relaxed">
+                        AI・自然言語処理技術、特に大規模言語モデル(LLM)とAIエージェントを活用し、実社会の課題を解決することに強い関心を持っています。高専時代からWebアプリケーション開発や勉強会の運営に主体的に取り組み、大学・大学院では一貫してAIエージェントと社会のインタラクションに関する研究に従事。SNSの炎上防止や学習支援など、AI技術を人々のコミュニケーションや学びに役立てるための研究開発に注力しています。研究の企画から実装、論文執筆、学会発表までを一貫して遂行する能力と、ユーザー視点に立った継続的な開発経験が強みです。
+                    </p>
+                </section>
 
-            <br>
-            <br>
-            <br>
-            <br>
-            <!-- 主要研究実績 -->
-            <section class="mb-8">
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    Research Highlights</h3>
-                <div class="space-y-6">
-
-                    <!-- 研究1: 炎上防止 -->
-                    <div class="p-4 border border-gray-200 rounded-lg print-border">
-                        <h4 class="text-lg font-semibold text-gray-800">LLM・検索拡張生成に基づく炎上防止コミュニティノート自動生成</h4>
-                        <p class="text-sm text-gray-600 mt-1">
-                            SNS上の「炎上」が誤解や誤情報から発生することに着目し、LLMとRAGを用いて炎上を早期に鎮静化させるための「コミュニティノート」を自動生成するシステムを研究・開発。社会課題とAI技術の接点に取り組む。
-                        </p>
-                        <div class="mt-2">
-                            <span class="text-sm font-medium text-gray-800 bg-gray-100 px-3 py-1 rounded-full print-bg"
-                                style="--print-bg-color: #f3f4f6;">
-                                <i data-lucide="play" class="inline w-4 h-4 -mt-0.5"></i> 現在研究中
-                            </span>
+                <!-- スキルセット -->
+                <section class="mb-8">
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        Skills
+                    </h3>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4"
+                    >
+                        <div>
+                            <h4
+                                class="text-lg font-semibold text-gray-800 mb-2"
+                            >
+                                プログラミング・言語
+                            </h4>
+                            <ul
+                                class="list-disc list-inside text-gray-700 space-y-1"
+                            >
+                                <li>
+                                    <strong>Python(6年):</strong> PyTorch, llama-cpp-python,
+                                    Webアプリ開発
+                                </li>
+                                <li>
+                                    <strong>C / C++(4年):</strong> 基礎プログラミング,
+                                    アルゴリズム
+                                </li>
+                                <li>
+                                    <strong
+                                        >JavaScript, Java, R, MATLAB, SQL:</strong
+                                    > 授業・研究・開発で使用経験あり
+                                </li>
+                                <li>
+                                    <strong>英語:</strong> TOEIC L&R 895点(2024年),
+                                    英語論文執筆経験あり
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4
+                                class="text-lg font-semibold text-gray-800 mb-2"
+                            >
+                                技術・ツール
+                            </h4>
+                            <ul
+                                class="list-disc list-inside text-gray-700 space-y-1"
+                            >
+                                <li>
+                                    <strong>AI / LLM:</strong> 大規模言語モデル(LLM),
+                                    検索拡張生成(RAG), ローカルLLM環境構築・運用経験あり
+                                </li>
+                                <li>
+                                    <strong>AIエージェント:</strong> マルチエージェントシミュレーション
+                                </li>
+                                <li>
+                                    <strong>開発ツール:</strong> Git, Docker
+                                </li>
+                                <li>
+                                    <strong>開発環境:</strong> VSCode, Cursor, Jupyter,
+                                    Anaconda
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </section>
 
-                    <!-- 研究2: SNSシミュレーション -->
-                    <div class="p-4 border border-gray-200 rounded-lg print-border">
-                        <div class="flex justify-between items-start">
-                            <h4 class="text-lg font-semibold text-gray-800"><a
-                                    href="https://www.jstage.jst.go.jp/article/wii/20/0/20_63/_article/-char/ja"
-                                    class="underline">複数チャットエージェントによるチャットコミュニティシミュレーション</a></h4>
+                <!-- 学歴 -->
+                <section class="mb-8">
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        Education
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <p class="text-base font-semibold text-gray-800">
+                                筑波大学 システム情報工学研究群
+                                知能機能システム学位プログラム
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                博士前期課程 (2025年4月 〜 2027年3月予定)
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-base font-semibold text-gray-800">
+                                工学院大学 情報学部 システム数理学科
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                学士(工学) (2023年4月 〜 2025年3月)
+                            </p>
+                        </li>
+                        <li>
+                            <p class="text-base font-semibold text-gray-800">
+                                サレジオ工業高等専門学校 情報工学科
+                            </p>
+                            <p class="text-sm text-gray-600">
+                                準学士 (2018年4月 〜 2023年3月)
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <!-- 主要研究実績 -->
+                <section class="mb-8">
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        Research Highlights
+                    </h3>
+                    <div class="space-y-6">
+                        <!-- 研究1: 炎上防止 -->
+                        <div
+                            class="p-4 border border-gray-200 rounded-lg print-border"
+                        >
+                            <h4 class="text-lg font-semibold text-gray-800">
+                                LLM・検索拡張生成に基づく炎上防止コミュニティノート自動生成
+                            </h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                SNS上の「炎上」が誤解や誤情報から発生することに着目し、LLMとRAGを用いて炎上を早期に鎮静化させるための「コミュニティノート」を自動生成するシステムを研究・開発。社会課題とAI技術の接点に取り組む。
+                            </p>
+                            <div class="mt-2">
+                                <span
+                                    class="text-sm font-medium text-gray-800 bg-gray-100 px-3 py-1 rounded-full print-bg"
+                                    style="--print-bg-color: #f3f4f6;"
+                                >
+                                    <i
+                                        data-lucide="play"
+                                        class="inline w-4 h-4 -mt-0.5"></i> 現在研究中
+                                </span>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                            人間の情報収集・読解能力の差をモデル化したAIエージェント群を構築し、RAGを用いてリアルなSNS上の対話や情報伝播をシミュレートするシステムを開発。意図的に情報力の差を持たせる設計により、リアルなシミュレーションが可能なことを確認した。
-                        </p>
-                        <div class="mt-2">
-                            <span
-                                class="text-sm font-medium text-green-800 bg-green-100 px-3 py-1 rounded-full print-bg"
-                                style="--print-bg-color: #dcfce7;">
-                                <i data-lucide="award" class="inline w-4 h-4 -mt-0.5"></i> <a
-                                    href="https://pub.confit.atlas.jp/ja/event/deim2025/presentation/4A-01"
-                                    class="underline">国内学会発表・学生プレゼンテーション賞 受賞 (DEIM2025)</a>
-                            </span>
-                            <span
-                                class="text-sm font-medium text-custom-orange-800 bg-custom-orange-100 px-3 py-1 rounded-full ml-2 print-bg"
-                                style="--print-bg-color: #FFF0E6;">
-                                <i data-lucide="file-text" class="inline w-4 h-4 -mt-0.5"></i> <a
-                                    href="https://arxiv.org/abs/2503.14620" class="underline">国際学会論文 (IEEE GCCE 2025
-                                    採択)</a>
-                            </span>
+
+                        <!-- 研究2: SNSシミュレーション -->
+                        <div
+                            class="p-4 border border-gray-200 rounded-lg print-border"
+                        >
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-semibold text-gray-800">
+                                    <a
+                                        href="https://www.jstage.jst.go.jp/article/wii/20/0/20_63/_article/-char/ja"
+                                        class="underline"
+                                        >複数チャットエージェントによるチャットコミュニティシミュレーション</a
+                                    >
+                                </h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">
+                                人間の情報収集・読解能力の差をモデル化したAIエージェント群を構築し、RAGを用いてリアルなSNS上の対話や情報伝播をシミュレートするシステムを開発。意図的に情報力の差を持たせる設計により、リアルなシミュレーションが可能なことを確認した。
+                            </p>
+                            <div class="mt-2">
+                                <span
+                                    class="text-sm font-medium text-green-800 bg-green-100 px-3 py-1 rounded-full print-bg"
+                                    style="--print-bg-color: #dcfce7;"
+                                >
+                                    <i
+                                        data-lucide="award"
+                                        class="inline w-4 h-4 -mt-0.5"></i>
+                                    <a
+                                        href="https://pub.confit.atlas.jp/ja/event/deim2025/presentation/4A-01"
+                                        class="underline"
+                                        >国内学会発表・学生プレゼンテーション賞
+                                        受賞 (DEIM2025)</a
+                                    >
+                                </span>
+                                <span
+                                    class="text-sm font-medium text-custom-orange-800 bg-custom-orange-100 px-3 py-1 rounded-full ml-2 print-bg"
+                                    style="--print-bg-color: #FFF0E6;"
+                                >
+                                    <i
+                                        data-lucide="file-text"
+                                        class="inline w-4 h-4 -mt-0.5"></i>
+                                    <a
+                                        href="https://arxiv.org/abs/2503.14620"
+                                        class="underline"
+                                        >国際学会論文 (IEEE GCCE 2025 採択)</a
+                                    >
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 研究3: 学習支援 -->
+                        <div
+                            class="p-4 border border-gray-200 rounded-lg print-border"
+                        >
+                            <h4 class="text-lg font-semibold text-gray-800">
+                                Web閲覧履歴を用いたLLMによる学習アドバイスの生成手法
+                            </h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                学習者のWeb閲覧履歴や発言履歴を分析し、個々の学習進度や理解度に合わせた最適なアドバイスをLLMが自動生成する手法を提案。人手作成よりも優れたアドバイスを生成できる可能性を示した。
+                            </p>
+                            <div class="mt-2">
+                                <span
+                                    class="text-sm font-medium text-gray-800 bg-gray-100 px-3 py-1 rounded-full print-bg"
+                                    style="--print-bg-color: #f3f4f6;"
+                                >
+                                    <i
+                                        data-lucide="mic"
+                                        class="inline w-4 h-4 -mt-0.5"></i> 国内学会発表
+                                    (DEIM2024)
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 研究4: QRコード -->
+                        <div
+                            class="p-4 border border-gray-200 rounded-lg print-border"
+                        >
+                            <h4 class="text-lg font-semibold text-gray-800">
+                                汚損したQRコードの読み取りと修復 (高専卒業研究)
+                            </h4>
+                            <p class="text-sm text-gray-600 mt-1">
+                                高度な画像補正処理とリード・ソロモン符号の消失訂正能力を応用し、一般的なリーダーでは読み取れない極度に歪んだり、大部分が欠損したりしたQRコードを読み取るアルゴリズムとシステムを開発。
+                            </p>
+                            <div class="mt-2">
+                                <span
+                                    class="text-sm font-medium text-green-800 bg-green-100 px-3 py-1 rounded-full print-bg"
+                                    style="--print-bg-color: #dcfce7;"
+                                >
+                                    <i
+                                        data-lucide="award"
+                                        class="inline w-4 h-4 -mt-0.5"></i> 優秀卒業研究賞
+                                    受賞 (サレジオ高専)
+                                </span>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <!-- 研究3: 学習支援 -->
-                    <div class="p-4 border border-gray-200 rounded-lg print-border">
-                        <h4 class="text-lg font-semibold text-gray-800">Web閲覧履歴を用いたLLMによる学習アドバイスの生成手法</h4>
-                        <p class="text-sm text-gray-600 mt-1">
-                            学習者のWeb閲覧履歴や発言履歴を分析し、個々の学習進度や理解度に合わせた最適なアドバイスをLLMが自動生成する手法を提案。人手作成よりも優れたアドバイスを生成できる可能性を示した。
-                        </p>
-                        <div class="mt-2">
-                            <span class="text-sm font-medium text-gray-800 bg-gray-100 px-3 py-1 rounded-full print-bg"
-                                style="--print-bg-color: #f3f4f6;">
-                                <i data-lucide="mic" class="inline w-4 h-4 -mt-0.5"></i> 国内学会発表 (DEIM2024)
-                            </span>
-                        </div>
-                    </div>
+                <!-- その他プロジェクト -->
+                <section>
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        Other Projects & Activities
+                    </h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>
+                            <strong>Webアプリケーション開発・運用:</strong>
+                            高専在学中、コロナ禍における外出支援を目的としたWebサービスを個人で企画・設計・開発・デプロイまで一貫して行い、継続運用を経験した。
+                        </li>
+                        <li>
+                            <strong>Discord Bot開発・保守:</strong>
+                            友人グループで日常的に使用する多機能BotをPythonで開発。現在も新機能の追加や保守・運用を継続しており、ユーザー視点での改善を実践。
+                        </li>
+                        <li>
+                            <strong>プログラミング勉強会の設立:</strong> 高専にてPythonを学ぶための自主的な勉強会を設立。中心メンバーとして運営を行い、継続的な学習の場を維持した経験あり。
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
 
-                    <!-- 研究4: QRコード -->
-                    <div class="p-4 border border-gray-200 rounded-lg print-border">
-                        <h4 class="text-lg font-semibold text-gray-800">汚損したQRコードの読み取りと修復 (高専卒業研究)</h4>
-                        <p class="text-sm text-gray-600 mt-1">
-                            高度な画像補正処理とリード・ソロモン符号の消失訂正能力を応用し、一般的なリーダーでは読み取れない極度に歪んだり、大部分が欠損したりしたQRコードを読み取るアルゴリズムとシステムを開発。
-                        </p>
-                        <div class="mt-2">
-                            <span
-                                class="text-sm font-medium text-green-800 bg-green-100 px-3 py-1 rounded-full print-bg"
-                                style="--print-bg-color: #dcfce7;">
-                                <i data-lucide="award" class="inline w-4 h-4 -mt-0.5"></i> 優秀卒業研究賞 受賞 (サレジオ高専)
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- その他プロジェクト -->
-            <section>
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    Other Projects & Activities</h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-2">
-                    <li>
-                        <strong>Webアプリケーション開発・運用:</strong>
-                        高専在学中、コロナ禍における外出支援を目的としたWebサービスを個人で企画・設計・開発・デプロイまで一貫して行い、継続運用を経験した。
-                    </li>
-                    <li>
-                        <strong>Discord Bot開発・保守:</strong>
-                        友人グループで日常的に使用する多機能BotをPythonで開発。現在も新機能の追加や保守・運用を継続しており、ユーザー視点での改善を実践。
-                    </li>
-                    <li>
-                        <strong>プログラミング勉強会の設立:</strong> 高専にてPythonを学ぶための自主的な勉強会を設立。中心メンバーとして運営を行い、継続的な学習の場を維持した経験あり。
-                    </li>
-                </ul>
-            </section>
-        </main>
-    </div>
-
-    <!-- アイコンの初期化スクリプト -->
-    <script>
-        lucide.createIcons();
-    </script>
-</body>
-
+        <!-- アイコンの初期化スクリプト -->
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
 </html>

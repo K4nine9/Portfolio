@@ -1,135 +1,164 @@
+---
+import "../styles/global.css";
+---
+
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>KK49DW: File History Tips</title>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- lucide icons CDN -->
+        <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KK49DW: File History Tips</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <!-- lucide icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        body {
-            /* Noto Sans JPを優先しつつ、英語・数字はInterで見やすく */
-            font-family: 'Noto Sans JP', 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        p {
-            text-indent: 1em;
-        }
-
-        /* 印刷用 */
-        @media print {
+        <style>
             body {
-                /* 印刷時の色調整を強制 */
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+                /* Noto Sans JPを優先しつつ、英語・数字はInterで見やすく */
+                font-family: "Noto Sans JP", "Inter", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
             }
 
-            .printable-area {
-                width: 100%;
-                max-width: 100%;
-                margin: 0;
-                padding: 0;
-                box-shadow: none;
-                border: none;
+            p {
+                text-indent: 1em;
             }
 
-            .no-print {
-                display: none;
+            /* 印刷用 */
+            @media print {
+                body {
+                    /* 印刷時の色調整を強制 */
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+
+                .printable-area {
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    box-shadow: none;
+                    border: none;
+                }
+
+                .no-print {
+                    display: none;
+                }
+
+                a {
+                    color: #000000 !important;
+                    text-decoration: underline !important;
+                }
+
+                .print-bg {
+                    background-color: var(
+                        --print-bg-color,
+                        transparent
+                    ) !important;
+                }
+
+                .print-border {
+                    border-width: 1px !important;
+                    border-color: #e5e7eb !important;
+                }
             }
 
-            a {
-                color: #000000 !important;
-                text-decoration: underline !important;
+            /* カスタムオレンジ色用のスタイル */
+            .text-custom-orange-700 {
+                color: #d9530a;
             }
 
-            .print-bg {
-                background-color: var(--print-bg-color, transparent) !important;
+            /* #F7630Cより少し濃くして視認性を確保 */
+            .text-custom-orange-600 {
+                color: #f7630c;
             }
 
-            .print-border {
-                border-width: 1px !important;
-                border-color: #e5e7eb !important;
-            }
-        }
-
-        /* カスタムオレンジ色用のスタイル */
-        .text-custom-orange-700 {
-            color: #D9530A;
-        }
-
-        /* #F7630Cより少し濃くして視認性を確保 */
-        .text-custom-orange-600 {
-            color: #F7630C;
-        }
-
-        /* main color
+            /* main color
         .border-custom-orange-200 { border-color: #FDE0CE; } /* #F7630Cの薄い色 */
-        .bg-custom-orange-100 {
-            background-color: #FFF0E6;
-        }
+            .bg-custom-orange-100 {
+                background-color: #fff0e6;
+            }
 
-        /* #F7630Cのさらに薄い色 */
-        .text-custom-orange-800 {
-            color: #B94608;
-        }
-    </style>
-</head>
+            /* #F7630Cのさらに薄い色 */
+            .text-custom-orange-800 {
+                color: #b94608;
+            }
+        </style>
+    </head>
 
-<body>
-    <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
-    <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
-    <div class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8">
+    <body>
+        <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
+        <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
+        <div
+            class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8"
+        >
+            <!-- ヘッダーセクション -->
+            <header
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"
+            >
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900">
+                        KK49DW: Memorandum
+                    </h1>
+                    <h3 class="text-sm text-gray-500">最終更新: 2026/03/19</h3>
+                    <h2 class="text-xl font-bold text-gray-600">書き散らし</h2>
+                    <p
+                        class="text-sm text-gray-600 mt-4"
+                        style="background-color: #EEEEEE; padding: 10px; text-indent:0;"
+                    >
+                        <span class="text-gray-600 font-bold italic"
+                            >Navigation</span
+                        ><br />
+                        <a
+                            href="https://k4nine9-github-io.translate.goog/Research-Accomplishments/memorandum.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en"
+                            class="text-sm underline text-custom-orange-600"
+                            >Translate to English</a
+                        >
+                        <br />
+                        <a
+                            href="index.html"
+                            class="text-sm underline text-custom-orange-600"
+                            >ホームに戻る</a
+                        >
+                    </p>
+                </div>
+            </header>
 
-        <!-- ヘッダーセクション -->
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-            <div>
-                <h1 class="text-4xl font-bold text-gray-900">KK49DW: Memorandum</h1>
-                <h3 class="text-sm text-gray-500">最終更新: 2026/03/19</h3>
-                <h2 class="text-xl font-bold text-gray-600">書き散らし</h2>
-                <p class="text-sm text-gray-600 mt-4" style="background-color: #EEEEEE; padding: 10px; text-indent:0;">
-                    <span class="text-gray-600 font-bold italic">Navigation</span><br>
-                    <a href="https://k4nine9-github-io.translate.goog/Research-Accomplishments/memorandum.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en"
-                        class="text-sm underline text-custom-orange-600">Translate to English</a>
-                    <br>
-                    <a href="index.html" class="text-sm underline text-custom-orange-600">ホームに戻る</a>
-                </p>
-            </div>
-        </header>
+            <!-- メインコンテンツ -->
+            <main>
+                <section class="mb-4">
+                    <h3
+                        class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4"
+                    >
+                        ポートフォリオを整理した(2026/03/19)
+                    </h3>
+                    <p class="text-base text-gray-700 leading-relaxed">
+                        今までまともに見せられるポートフォリオがなく、Github上のリポジトリを直に公開して、README.mdとかにそれっぽい内容を書いておく、というストロングスタイルだったので、Github
+                        Pagesでそれっぽく見えるようにした。正直就活ももう終わりつつあるが、今後色々なことに使えるだろう…と期待している。
+                    </p>
+                    <p class="text-base text-gray-700 leading-relaxed">
+                        ついでに文章を公開できるところも作った。それがここ。ポートフォリオから数クリックでアクセスできるような危険な場所にどんな文章を載せるんだよという話はあるが、なんか書きたくなったらなんか書くかもしれない。
+                    </p>
+                </section>
 
-        <!-- メインコンテンツ -->
-        <main>
-            <section class="mb-4">
-                <h3 class="text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4">
-                    ポートフォリオを整理した(2026/03/19)</h3>
-                <p class="text-base text-gray-700 leading-relaxed">
-                    今までまともに見せられるポートフォリオがなく、Github上のリポジトリを直に公開して、README.mdとかにそれっぽい内容を書いておく、というストロングスタイルだったので、Github
-                    Pagesでそれっぽく見えるようにした。正直就活ももう終わりつつあるが、今後色々なことに使えるだろう…と期待している。
-                </p>
-                <p class="text-base text-gray-700 leading-relaxed">
-                    ついでに文章を公開できるところも作った。それがここ。ポートフォリオから数クリックでアクセスできるような危険な場所にどんな文章を載せるんだよという話はあるが、なんか書きたくなったらなんか書くかもしれない。
-                </p>
-
-            </section>
-
-
-
-            <section class="text-sm text-gray-500 mt-10 border-t-2 border-gray-200 pt-2">
-                このサイトはGithub Pagesで公開されています。<br>
-                <a href="https://github.com/K4nine9/Research-Accomplishments"
-                    class="underline text-custom-orange-600">https://github.com/K4nine9/Research-Accomplishments</a>
-            </section>
-
-</body>
-
+                <section
+                    class="text-sm text-gray-500 mt-10 border-t-2 border-gray-200 pt-2"
+                >
+                    このサイトはGithub Pagesで公開されています。<br />
+                    <a
+                        href="https://github.com/K4nine9/Research-Accomplishments"
+                        class="underline text-custom-orange-600"
+                        >https://github.com/K4nine9/Research-Accomplishments</a
+                    >
+                </section>
+            </main>
+        </div></body
+    >
 </html>
