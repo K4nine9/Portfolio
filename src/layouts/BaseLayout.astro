@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-
+import TableOfContents from "../components/TableOfContents.astro";
 const {
     title = "K4nine9's Documents Warehouse",
     subtitle,
@@ -92,44 +92,19 @@ const {
         >
             <!-- ヘッダーセクション -->
             <header
-                class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10"
             >
-                <div>
+                <div class="w-full">
                     <h1 class="text-4xl font-bold text-gray-900">
                         {title}
                     </h1>
-                    <h3 class="text-sm text-gray-500">
-                        最終更新: {lastUpdated}
-                    </h3>
                     <h2 class="text-xl font-bold text-gray-600">
                         {subtitle}
                     </h2>
-                    <p
-                        class="text-sm text-gray-600 mt-4"
-                        style="background-color: #EEEEEE; padding: 10px;"
-                    >
-                        <span class="text-gray-600 font-bold italic"
-                            >Navigation</span
-                        ><br />
-                        <a
-                            href="http://translate.google.com/translate?langpair=en%7Cja&hl=en&u=https://k4nine9-portfolio.netlify.app/"
-                            class="text-sm underline text-custom-orange-600"
-                            >Translate to English</a
-                        >
-                        {
-                            showHomeButton && (
-                                <>
-                                    <br />
-                                    <a
-                                        href="/"
-                                        class="text-sm underline text-custom-orange-600"
-                                    >
-                                        ホームに戻る
-                                    </a>
-                                </>
-                            )
-                        }
-                    </p>
+                    <h3 class="text-sm text-gray-500">
+                        最終更新: {lastUpdated}
+                    </h3>
+                    <TableOfContents />
                 </div>
             </header>
 
@@ -137,7 +112,7 @@ const {
             <main>
                 <slot />
             </main>
-            <Footer />
+            <Footer showHomeButton={showHomeButton} />
         </div>
     </body>
 </html>

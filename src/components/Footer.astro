@@ -1,4 +1,36 @@
+---
+// 現在のページの完全なURLを取得
+const currentUrl = Astro.url.href;
+
+// Google翻訳のベースURL
+const translateBase =
+    "http://translate.google.com/translate?langpair=ja%7Cen&hl=en&u=";
+
+const translateUrl = `${translateBase}${encodeURIComponent(currentUrl)}`;
+
+const { showHomeButton = true } = Astro.props;
+---
+
 <footer class="text-sm text-gray-500 mt-10 border-t-2 border-gray-200 pt-2">
+    <div class="bg-gray-50 p-4 rounded-lg mb-4 border border-gray-200">
+        <span class="text-gray-600 font-bold italic">Navigation</span><br />
+        <a href={translateUrl} class="text-sm underline text-custom-orange-600"
+            >Translate to English</a
+        >
+        {
+            showHomeButton && (
+                <>
+                    <br />
+                    <a
+                        href="/"
+                        class="text-sm underline text-custom-orange-600"
+                    >
+                        ホームに戻る
+                    </a>
+                </>
+            )
+        }
+    </div>
     このサイトはNetlifyでホスティングされています。<br />
     Source:
     <a
