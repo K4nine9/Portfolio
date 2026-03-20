@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+@theme {
+    --color-custom-orange-100: #fff0e6;
+    --color-custom-orange-200: #FDE0CE;
+    --color-custom-orange-600: #f7630c;
+    --color-custom-orange-700: #d9530a;
+    --color-custom-orange-800: #b94608;
+}
+
+@layer base {
+    h3 {
+        @apply text-2xl font-bold text-custom-orange-700 border-b-2 border-custom-orange-200 pb-2 mb-4;
+    }
+
+    h4 {
+        @apply text-xl font-bold text-gray-600 pb-2;
+    }
+
+    p {
+        @apply text-base text-gray-700 leading-relaxed mb-4
+    }
+
+    table {
+        @apply text-base text-gray-700 leading-relaxed mb-4;
+    }
+
+    ul {
+        @apply text-base text-gray-700 leading-relaxed mb-4;
+    }
+
+    a {
+        @apply underline text-custom-orange-600;
+    }
+
+    section {
+        @apply mb-6;
+    }
+}

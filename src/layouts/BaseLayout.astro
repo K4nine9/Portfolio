@@ -1,0 +1,143 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+
+const {
+    title = "K4nine9's Documents Warehouse",
+    subtitle,
+    lastUpdated,
+    showHomeButton = false,
+    class: className,
+} = Astro.props;
+---
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+        <!-- Tailwind CSS CDN -->
+        <!--<script src="https://cdn.tailwindcss.com"></script> -->
+        <!-- Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- lucide icons CDN -->
+        <!--<script src="https://unpkg.com/lucide@latest"></script> -->
+
+        <style>
+            body {
+                /* Noto Sans JPを優先しつつ、英語・数字はInterで見やすく */
+                font-family: "Noto Sans JP", "Inter", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* 印刷用 */
+            @media print {
+                body {
+                    /* 印刷時の色調整を強制 */
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+
+                .printable-area {
+                    width: 100%;
+                    max-width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    box-shadow: none;
+                    border: none;
+                }
+
+                .no-print {
+                    display: none;
+                }
+
+                a {
+                    color: #000000 !important;
+                    text-decoration: underline !important;
+                }
+
+                .print-bg {
+                    background-color: var(
+                        --print-bg-color,
+                        transparent
+                    ) !important;
+                }
+
+                .print-border {
+                    border-width: 1px !important;
+                    border-color: #e5e7eb !important;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div
+            class:list={[
+                className, // 外部から渡されたクラスがここに追加される
+            ]}
+        >
+        </div>
+
+        <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
+        <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
+        <div
+            class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8"
+        >
+            <!-- ヘッダーセクション -->
+            <header
+                class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"
+            >
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900">
+                        {title}
+                    </h1>
+                    <h3 class="text-sm text-gray-500">
+                        最終更新: {lastUpdated}
+                    </h3>
+                    <h2 class="text-xl font-bold text-gray-600">
+                        {subtitle}
+                    </h2>
+                    <p
+                        class="text-sm text-gray-600 mt-4"
+                        style="background-color: #EEEEEE; padding: 10px;"
+                    >
+                        <span class="text-gray-600 font-bold italic"
+                            >Navigation</span
+                        ><br />
+                        <a
+                            href="http://translate.google.com/translate?langpair=en%7Cja&hl=en&u=https://k4nine9-portfolio.netlify.app/"
+                            class="text-sm underline text-custom-orange-600"
+                            >Translate to English</a
+                        >
+                        {
+                            showHomeButton && (
+                                <>
+                                    <br />
+                                    <a
+                                        href="/"
+                                        class="text-sm underline text-custom-orange-600"
+                                    >
+                                        ホームに戻る
+                                    </a>
+                                </>
+                            )
+                        }
+                    </p>
+                </div>
+            </header>
+
+            <!-- メインコンテンツ -->
+            <main>
+                <slot />
+            </main>
+            <Footer />
+        </div>
+    </body>
+</html>
