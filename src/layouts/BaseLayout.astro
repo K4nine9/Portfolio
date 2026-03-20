@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 const {
     title = "K4nine9's Documents Warehouse",
     subtitle,
@@ -77,7 +78,9 @@ const {
         </style>
     </head>
 
-    <body>
+    <body
+        class="bg-[#f9fafb] dark:bg-zinc-950 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+    >
         <div
             class:list={[
                 className, // 外部から渡されたクラスがここに追加される
@@ -88,20 +91,27 @@ const {
         <!-- 画面表示時の中央寄せ・シャドウがけコンテナ -->
         <!-- 印刷時には printable-area スタイルが適用され、全幅になる -->
         <div
-            class="printable-area max-w-4xl mx-auto bg-white shadow-lg my-8 p-10 print:my-0 print:p-8"
+            class="printable-area max-w-4xl mx-auto bg-white dark:bg-zinc-900 shadow-lg my-8 p-10 print:my-0 print:p-8 transition-colors duration-300"
         >
             <!-- ヘッダーセクション -->
             <header
                 class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10"
             >
                 <div class="w-full">
-                    <h1 class="text-4xl font-bold text-gray-900">
+                    <h1
+                        class="text-4xl font-bold text-gray-900 dark:text-gray-100"
+                    >
                         {title}
                     </h1>
-                    <h2 class="text-xl font-bold text-gray-600">
+                    <h2
+                        class="text-xl font-bold text-gray-600 dark:text-gray-300"
+                    >
                         {subtitle}
                     </h2>
-                    <h3 class="text-sm text-gray-500">
+                    <h3
+                        class="text-sm text-gray-500 dark:text-gray-400 mb-2"
+                        style="margin-top:0;"
+                    >
                         最終更新: {lastUpdated}
                     </h3>
                     <TableOfContents />
@@ -114,5 +124,7 @@ const {
             </main>
             <Footer showHomeButton={showHomeButton} />
         </div>
+
+        <ThemeToggle />
     </body>
 </html>

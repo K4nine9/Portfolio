@@ -11,10 +11,10 @@ const translateUrl = `${translateBase}${encodeURIComponent(currentUrl)}`;
 const { showHomeButton = true } = Astro.props;
 ---
 
-<footer class="text-sm text-gray-500 mt-10 border-t-2 border-gray-200 pt-2">
-    <div class="bg-gray-50 p-4 rounded-lg mb-4 border border-gray-200">
-        <span class="text-gray-600 font-bold italic">Navigation</span><br />
-        <a href={translateUrl} class="text-sm underline text-custom-orange-600"
+<footer class="text-sm text-gray-500 dark:text-gray-400 mt-10 border-t-2 border-gray-200 dark:border-zinc-700 pt-2 transition-colors duration-300">
+    <div class="bg-gray-50 dark:bg-zinc-800 p-4 rounded-lg mb-4 border border-gray-200 dark:border-zinc-700 transition-colors duration-300">
+        <span class="text-gray-600 dark:text-gray-300 font-bold italic">Navigation</span><br />
+        <a href={translateUrl} class="text-sm underline text-custom-orange-600 dark:text-custom-orange-400 hover:text-custom-orange-700 dark:hover:text-custom-orange-300 transition-colors"
             >Translate to English</a
         >
         {
@@ -23,7 +23,7 @@ const { showHomeButton = true } = Astro.props;
                     <br />
                     <a
                         href="/"
-                        class="text-sm underline text-custom-orange-600"
+                        class="text-sm underline text-custom-orange-600 dark:text-custom-orange-400 hover:text-custom-orange-700 dark:hover:text-custom-orange-300 transition-colors"
                     >
                         ホームに戻る
                     </a>
@@ -35,7 +35,7 @@ const { showHomeButton = true } = Astro.props;
     Source:
     <a
         href="https://github.com/K4nine9/Portfolio"
-        class="underline text-orange-600 hover:text-orange-700 transition-colors"
+        class="underline text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 transition-colors"
     >
         https://github.com/K4nine9/Portfolio
     </a>
