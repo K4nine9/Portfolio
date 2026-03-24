@@ -1,37 +1,44 @@
 <aside
-    class="toc-container bg-gray-50 dark:bg-zinc-800 p-4 rounded-lg border border-gray-200 dark:border-zinc-700 transition-colors duration-300"
+  class="toc-container bg-gray-50 dark:bg-zinc-800 p-4 rounded-lg border border-gray-200 dark:border-zinc-700 transition-colors duration-300"
 >
-    <h4
-        class="font-bold text-gray-900 dark:text-gray-100 mb-2 italic"
-        style="margin-top:0;"
-    >
-        Contents
-    </h4>
-    <ul
-        id="toc-list"
-        class="space-y-1 text-sm text-custom-orange-700 dark:text-custom-orange-400"
-    >
-    </ul>
+  <h4
+    class="font-bold text-gray-900 dark:text-gray-100 mb-2 italic"
+    style="margin-top:0;"
+  >
+    Contents
+  </h4>
+  <ul
+    id="toc-list"
+    class="space-y-1 text-sm text-custom-orange-700 dark:text-custom-orange-400"
+  >
+  </ul>
 </aside>
 
 <script>
-    // ページ内のすべての h3 タグを取得
-    const headings = document.querySelectorAll("main h3");
-    const tocList = document.getElementById("toc-list");
+  // ページ内のすべての h3, h4 タグを取得
+  const headings = document.querySelectorAll("main h3, main h4");
+  const tocList = document.getElementById("toc-list");
 
-    headings.forEach((heading, index) => {
-        // 1. 各h3にIDを振る（リンク用）
-        const id = heading.id || `heading-${index}`;
-        heading.id = id;
+  headings.forEach((heading, index) => {
+    // 1. 各h3にIDを振る（リンク用）
+    const id = heading.id || `heading-${index}`;
+    heading.id = id;
 
-        // 2. 目次用のリストアイテムを作成
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = `#${id}`;
-        a.textContent = heading.textContent;
-        a.className = "hover:underline";
+    // 2. 目次用のリストアイテムを作成
+    const li = document.createElement("li");
 
-        li.appendChild(a);
-        tocList?.appendChild(li);
-    });
+    const a = document.createElement("a");
+    a.href = `#${id}`;
+
+    a.textContent = heading.textContent;
+    a.className = "hover:underline";
+
+    // h3とh4でインデントを変える
+    if (heading.tagName === "H4") {
+      a.style.marginLeft = "1rem";
+    }
+
+    li.appendChild(a);
+    tocList?.appendChild(li);
+  });
 </script>

@@ -16,34 +16,47 @@
 @layer base {
     h3 {
         @apply text-2xl font-bold text-custom-orange-700 dark:text-custom-orange-400 border-b-2 border-custom-orange-200 dark:border-custom-orange-800 pb-2 mb-4 mt-8;
+        word-break: auto-phrase;
     }
 
     h4 {
         @apply text-xl font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
     }
 
     h5 {
         @apply text-lg font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
     }
 
     h6 {
         @apply text-lg font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
     }
 
     p {
         @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-6;
+        word-break: auto-phrase;
     }
 
     table {
         @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-4;
+        word-break: auto-phrase;
     }
 
     ul {
         @apply text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4;
+        word-break: auto-phrase;
+        }
+
+    td {
+        @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-4;
+        word-break: auto-phrase;
     }
 
     a {
         @apply underline text-custom-orange-600 dark:text-custom-orange-400;
+        word-break: auto-phrase;
     }
 
     section {
@@ -52,9 +65,11 @@
 
     code {
         @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded;
+        word-break: auto-phrase;
     }
 
     pre {
         @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded;
+        word-break: auto-phrase;
     }
 }

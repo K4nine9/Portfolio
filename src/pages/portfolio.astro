@@ -10,65 +10,157 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   showHomeButton={true}
 >
   <section>
+    <h3>Attention!</h3>
+    <p>現在このページは編集中です。</p>
+    <p>
+      詳細なポートフォリオに関しては、<a href="/portfolio_printable">こちら</a
+      >をご覧ください。
+    </p>
+  </section>
+
+  <section>
+    <h3>tl;dr</h3>
+    <p>
+      筑波大学大学院でAI、特にLLMを研究している修士1年生です。<br />
+    </p>
+  </section>
+
+  <section>
     <h3>概要</h3>
     <p>TBA</p>
 
     <h3>スキル</h3>
     <h4>扱える言語</h4>
+    <p>
+      割と幅広く触れてきましたが、Pythonがメインです。<br
+      />勉強すればだいたい何でも使えると思います。
+    </p>
     <table>
       <tr>
-        <td>Python</td>
-        <td
-          >：6年ほど継続して利用中。ほとんどの開発・開発において利用。PytorchやLlama-cpp-pythonを利用したローカルLLMの利用、Webアプリケーション・サービス開発、その他個人的なアプリ開発まで幅広く活用しています。</td
+        <td class="bg-gray-200 p-2">Python</td>
+        <td class="bg-gray-200 p-2"
+          >6年ほど継続して利用中。ほとんどの開発・開発において利用。PytorchやLlama-cpp-pythonを利用したローカルLLMの利用、Django等を利用したWebアプリケーションやWebサービスの開発など、その他個人的なアプリ開発まで幅広く活用しています。</td
         >
       </tr>
       <tr>
-        <td>C/C+/C++</td>
-        <td
-          >：4年ほど経験あり。プログラミング基礎学習に利用した他、Pythonでの処理を部分的に高速化するなど、アルゴリズム的な処理最適化に利用しています。</td
+        <td class="bg-gray-100 p-2">C/C+/C++</td>
+        <td class="bg-gray-100 p-2"
+          >4年ほど経験あり。プログラミング基礎学習に利用した他、Pythonでの処理を部分的に高速化するなど、アルゴリズム的な処理の最適化に利用しています。</td
         >
       </tr>
       <tr>
-        <td>R/Matlab</td>
-        <td
-          >：どちらも2~3年ほど利用。研究におけるデータ解析等に利用。統計解析に関しても経験があります。</td
+        <td class="bg-gray-200 p-2">R/Matlab</td>
+        <td class="bg-gray-200 p-2"
+          >どちらも2~3年ほど利用。<br
+          />研究におけるデータ解析等に利用。統計解析に関しても経験があります。</td
         >
       </tr>
       <tr>
-        <td>HTML/JS/CSS</td>
-        <td
-          >：2年ほど、Webアプリ開発などに利用。専門外ですが、UI/UXに気をつけて開発するよう心がけています。</td
+        <td class="bg-gray-100 p-2">HTML/JS/CSS</td>
+        <td class="bg-gray-100 p-2"
+          >2年ほど、Webアプリ開発などに利用。<br
+          />専門外ですが、UI/UXに気をつけて開発するよう心がけています。</td
         >
       </tr>
       <tr>
-        <td>SQL/RDBMS</td>
-        <td
-          >：2年ほど、研究・開発の両面で利用。PostgreSQLとSQLiteが好きです。</td
+        <td class="bg-gray-200 p-2">SQL/RDBMS</td>
+        <td class="bg-gray-200 p-2"
+          >2年ほど、研究・開発の両面で利用。<br
+          />PostgreSQLとSQLiteが好きです。</td
         >
       </tr>
       <tr>
-        <td>Shell Script</td>
-        <td>：1.5年ほど、研究での実験自動化などに利用。</td>
-      </tr>
-      <tr>
-        <td>Unix系OS(Linuxほか)</td>
-        <td
-          >：3年ほど利用。研究・開発の両面で利用。Ubuntu, Raspberry Pi
-          OSなどを利用。</td
+        <td class="bg-gray-100 p-2">NoSQL</td>
+        <td class="bg-gray-100 p-2"
+          >0.5年ほど、研究のために利用。結局RDBに落ち着きました。<br
+          />Neo4jなどを利用していました。</td
         >
       </tr>
       <tr>
-        <td>Java</td>
-        <td>：1年ほど利用。シミュレーションシステムの開発に利用。</td>
+        <td class="bg-gray-200 p-2">Shell Script</td>
+        <td class="bg-gray-200 p-2"
+          >1.5年ほど、研究での実験自動化などに利用。<br
+          />ちょっと違いますが、nano派です。Emacsに挑戦して挫折した過去があります。</td
+        >
+      </tr>
+      <tr>
+        <td class="bg-gray-100 p-2">Git/GitHub</td>
+        <td class="bg-gray-100 p-2"
+          >5年ほど利用。研究・開発の両面で利用。<br
+          />GitHubをメインで利用しています。このサイトもGitリポジトリからデプロイしています。</td
+        >
+      </tr>
+      <tr>
+        <td class="bg-gray-200 p-2">CI/CD関連</td>
+        <td class="bg-gray-200 p-2"
+          >2年ほど、研究・開発のために利用。<br />GitHub
+          Actionsのほか、Dockerを利用した開発環境の構築などを行っています。</td
+        >
+      </tr>
+      <tr>
+        <td class="bg-gray-100 p-2">Unix系OS<br />(Linuxほか)</td>
+        <td class="bg-gray-100 p-2"
+          >3年ほど利用。研究・開発の両面で利用。<br />Ubuntu, Raspberry Pi
+          OSなどを利用。<br
+          />CUDAと併用したGPGPUコンピューティング環境の構築、運用経験もあります。</td
+        >
+      </tr>
+      <tr>
+        <td class="bg-gray-200 p-2">クラウド関連</td>
+        <td class="bg-gray-200 p-2"
+          >GCP・AWSを2年ほど研究・開発の両面で利用。<br
+          />GCPがメインですが、AWSも使えます。EC2, Lambda, S3, Cloud
+          Runなどを利用。</td
+        >
       </tr>
     </table>
 
     <h4>技術・ツール</h4>
+    <p>
+      専攻分野であるAI系、特に大規模言語モデルに強いです。<br />
+      特に、ある程度不安定さのあるLLMの出力を安定化させたり、扱いやすく操作することで、LLMを取り入れたシステムを構築することが得意です。<br
+      />
+      ほかにも、Webサービス・アプリ開発や、チャットボットの開発、データ分析など、幅広く対応できます。<br
+      />
+      必要であれば、ここに載っていない技術・ツールに関しても、積極的に学習して対応します。
+    </p>
 
     <h4>その他スキル</h4>
+    <table>
+      <tr>
+        <td class="bg-gray-200 p-2">TOEIC L&R</td>
+        <td class="bg-gray-200 p-2">895点 (2024/04)</td>
+      </tr>
+      <tr>
+        <td class="bg-gray-100 p-2">ゲームのローカライズ経験あり</td>
+        <td class="bg-gray-100 p-2"
+          >半公認状態で、インディゲームのローカライズを行うパッチを作成・配布しています。<br
+          />
+          ゲームの世界観や雰囲気を壊さないようにしつつ、一貫性をもった翻訳を心がけています。
+        </td>
+      </tr>
+      <tr>
+        <td class="bg-gray-200 p-2">(英語)論文執筆経験あり</td>
+        <td class="bg-gray-200 p-2"
+          >国際学会にて、英語での論文発表・執筆経験あり。<br
+          />もちろん日本語論文もいくつか出しています。研究実績の欄をご覧ください。
+        </td>
+      </tr>
+    </table>
 
     <h3>略歴</h3>
-    <p>TBA</p>
+    <h4>学歴</h4>
+    <h5>筑波大学 システム情報工学研究群 知能機能システム学位プログラム</h5>
+    <p>博士前期課程 (2025年4月 〜 2027年3月予定)</p>
+    <h5>工学院大学 情報学部 システム数理学科</h5>
+    <p>学士(工学) (2023年4月 〜 2025年3月)</p>
+    <h5>サレジオ工業高等専門学校 情報工学科</h5>
+    <p>準学士 (2018年4月 〜 2023年3月)</p>
+    <h4>インターン・アルバイト等</h4>
+    <h5>株式会社 PKSHA Technology</h5>
+    <p>サマーインターン(2025年9月)</p>
+    <h5>TA・RA(筑波大学)</h5>
+    <p>授業補助、研究補助 (2025年4月 〜 現在)</p>
 
     <h3>開発実績</h3>
     <p>TBA</p>
@@ -76,6 +168,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h3>研究実績</h3>
     <p>TBA</p>
 
-    <h3></h3>
+    <h3>リンク</h3>
+    <p>TBA</p>
   </section>
 </BaseLayout>
+
+学士(工学) (2023年4月 〜 2025年3月) サレジオ工業高等専門学校 情報工学科 準学士
+(2018年4月 〜 2023年3月)
+<h4>職歴</h4>
+<p>TBA</p>
+
+<h3>開発実績</h3>
+<p>TBA</p>
+
+<h3>研究実績</h3>
+<p>TBA</p>
+
+<h3>リンク</h3>
+<p>TBA</p>
