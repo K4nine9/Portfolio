@@ -45,7 +45,7 @@
     }
 
     ul {
-        @apply text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4;
+        @apply text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 list-disc pl-5;
         word-break: auto-phrase;
         }
 
