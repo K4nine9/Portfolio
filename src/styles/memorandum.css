@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-custom-orange-100: #fff0e6;
+    --color-custom-orange-200: #FDE0CE;
+    --color-custom-orange-300: #F9C2A7;
+    --color-custom-orange-400: #F4A382;
+    --color-custom-orange-500: #EF845E;
+    --color-custom-orange-600: #f7630c;
+    --color-custom-orange-700: #d9530a;
+    --color-custom-orange-800: #b94608;
+}
+
+@layer base {
+    h3 {
+        @apply text-2xl font-bold text-custom-orange-700 dark:text-custom-orange-400 border-b-2 border-custom-orange-200 dark:border-custom-orange-800 pb-2 mb-4 mt-8;
+        word-break: auto-phrase;
+    }
+
+    h4 {
+        @apply text-xl font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
+    }
+
+    h5 {
+        @apply text-lg font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
+    }
+
+    h6 {
+        @apply text-lg font-bold text-gray-600 dark:text-gray-100 pb-2 mt-6;
+        word-break: auto-phrase;
+    }
+
+    p {
+        @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-6;
+        word-break: auto-phrase;
+    }
+
+    table {
+        @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-4;
+        word-break: auto-phrase;
+    }
+
+    ul {
+        @apply text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 list-disc pl-5;
+        word-break: auto-phrase;
+        }
+
+    td {
+        @apply text-base text-gray-700 dark:text-gray-100 leading-relaxed mb-4;
+        word-break: auto-phrase;
+    }
+
+    a {
+        @apply underline text-custom-orange-600 dark:text-custom-orange-400;
+        word-break: auto-phrase;
+    }
+
+    section {
+        @apply mb-10 mt-10;
+    }
+
+    code {
+        @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded;
+        word-break: auto-phrase;
+    }
+
+    pre {
+        @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded;
+        word-break: auto-phrase;
+    }
+}
