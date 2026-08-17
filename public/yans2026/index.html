@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YANS2026 補足説明資料 (スマホ版) | コミュニティノート自動付与手法</title>
+    <title>YANS2026 補足説明資料 | コミュニティノート自動付与手法</title>
     <style>
         :root {
             --bg-primary: #09090b;
@@ -1079,7 +1079,7 @@
 
             <!-- TAB 1: OVERVIEW -->
             <div id="tab-overview" class="tab-pane">
-                
+
                 <!-- 4 Major KPIs -->
                 <div class="grid-4" style="margin-bottom: 20px;">
                     <div class="stat-card">
@@ -1110,12 +1110,12 @@
                         <div class="card-title">🔄 提案する3段階自律生成パイプライン</div>
                         <span class="quick-tag">単段RAGの限界 (+0.4pp) を打破</span>
                     </div>
-                    
+
                     <div class="flow-grid">
                         <div class="flow-node highlight">
                             <span class="flow-badge">Stage 1</span>
                             <div class="flow-title">調査レポート生成</div>
-                            <div class="flow-sub">投稿＋理由タグから論点を抽出し、Web検索で多角的事実・URLを構造化</div>
+                            <div class="flow-sub">投稿 + 理由タグから論点を抽出し、Web検索で多角的事実・URLを構造化</div>
                         </div>
 
                         <div class="flow-arrow">➔</div>
@@ -1337,7 +1337,7 @@
                             </div>
                             <div class="flow-title">調査レポート生成</div>
                             <ul class="key-points" style="margin-top:8px;">
-                                <li><strong>入力:</strong> 投稿本文 ＋ <code>{reason_tag}</code></li>
+                                <li><strong>入力:</strong> 投稿本文  +  <code>{reason_tag}</code></li>
                                 <li><strong>タスク:</strong> 主張抽出 ➔ 構造化エビデンス集積</li>
                                 <li><strong>目的:</strong> 検索ノイズの遮断と事実の抽象化</li>
                             </ul>
@@ -1350,7 +1350,7 @@
                             </div>
                             <div class="flow-title">中立ノート初稿起草</div>
                             <ul class="key-points" style="margin-top:8px;">
-                                <li><strong>入力:</strong> レポート ＋ 3-shot Examples</li>
+                                <li><strong>入力:</strong> レポート  +  3-shot Examples</li>
                                 <li><strong>タスク:</strong> Xガイドライン準拠の初稿生成</li>
                                 <li><strong>目的:</strong> 客観的トーン・一次情報URLの配置</li>
                             </ul>
@@ -1363,7 +1363,7 @@
                             </div>
                             <div class="flow-title">自己添削 & 清書</div>
                             <ul class="key-points" style="margin-top:8px;">
-                                <li><strong>入力:</strong> 初稿 ＋ <code>{feedback_str}</code> (文字数/HTTP)</li>
+                                <li><strong>入力:</strong> 初稿  +  <code>{feedback_str}</code> (文字数/HTTP)</li>
                                 <li><strong>タスク:</strong> 4大チェックリストに基づく自己校正</li>
                                 <li><strong>目的:</strong> 280文字圧縮 & 一次URL正規化 (最大3回)</li>
                             </ul>
