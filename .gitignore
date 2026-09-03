@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # scratch
 scratch/
+
+# temp
+.tmp.driveupload/
+.tmp.drivedownload/
+
+desktop.ini
